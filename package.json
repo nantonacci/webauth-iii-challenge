@@ -1,7 +1,7 @@
 {
-  "name": "webauth-i-challenge",
+  "name": "webauth-iii-challenge",
   "version": "1.0.0",
-  "description": "Webauth I Challenge",
+  "description": "Webauth III Challenge",
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
