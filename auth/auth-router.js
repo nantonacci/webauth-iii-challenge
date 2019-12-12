@@ -12,11 +12,20 @@ router.post("/register", (req, res) => {
 
   Users.add(user)
     .then(saved => {
-      const token = getToken(saved);
+      const token = genToken(saved);
       res.status(201).json({ created_user: saved, token: token });
     })
-    .catch(error => {
-      res.status(500).json(error);
+    .catch(err => {
+      var response = {
+        success: false,
+        message: "An error has occur with your request; please try again"
+      };
+
+      // log the errors
+      console.error(err);
+
+      // or send a 500 internal server error
+      res.status(500).json(response);
     });
 });
 
@@ -42,7 +51,7 @@ function genToken(user) {
   const payload = {
     userid: user.id,
     username: user.username,
-    roles: ["Student"]
+    department: user.department
   };
   const options = { expiresIn: "1h" };
   const token = jwt.sign(payload, secrets.jwtSecret, options);

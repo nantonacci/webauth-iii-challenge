@@ -16,6 +16,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(401).json({ message: "unauthorized" });
+    res.status(401).json({ message: "You shall not pass!" });
   }
 };
